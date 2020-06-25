@@ -53,7 +53,7 @@
 
 Для Firebase реализовано множество библиотек подключения к серверу для разных инструментальных средств. Ещё одна исключительно важная особенность - интеграция с Google Analytics, что позволяет, например, транслировать из приложения в облако информацию о возникших ошибках в приложении, что влияет на оперативность поиска и устранения сбоев.
 
-Parse Server - разработка, которая была куплена Facebook, но затем "отпущена" в open-source. В [AWS](https://aws.amazon.com/marketplace/pp/Bitnami-Parse-Server-Certified-by-Bitnami/B01BLQ17TO) есть образ Parse Server от [Bitnami](https://bitnami.com/), который може6т быть развёрнут в облаке AWS за пару минут.
+Parse Server - разработка, которая была куплена Facebook, но затем "отпущена" в open-source. В [AWS](https://aws.amazon.com/marketplace/pp/Bitnami-Parse-Server-Certified-by-Bitnami/B01BLQ17TO) есть образ Parse Server от [Bitnami](https://bitnami.com/), который может быть развёрнут в облаке AWS за пару минут.
 
 AWS Lambda - промежуточный уровень, описываемый как набор функций в облаке AWS, разработанных на разных языках программирования и подходит для потоковой обработки данных.
 
