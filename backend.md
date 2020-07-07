@@ -47,6 +47,8 @@ AWS: 1 Core 1Gb t2.micro + DynamoDB - оценка в $27/месяц. Ключе
 
 Стоимость SSL-сертификата **Thawte SSL WebServer** на [Zenon](https://www.zenon.net/ssl/) составляет 6384 руб/год.
 
+Бесплатные сертификаты можно сгенерировать на [Let's Encrypt](https://letsencrypt.org/ru/getting-started/).
+
 ## Стоимость использования сервиса доступа к картам
 
 https://developers.google.com/maps/billing/understanding-cost-of-use
