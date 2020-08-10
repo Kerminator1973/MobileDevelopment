@@ -162,6 +162,8 @@ NoSQL действительно работают очень быстро при
 
 В конце 2020 года планируется выпуск [новой версии Qt 6](https://www.qt.io/blog/qt-roadmap-for-2020). В числе прочего - поддержка C++ 20. Расширенная поддержка QML и Python. Значительно улучшается поддержка CMake.
 
+Статьи [To Revive the Mac, Apple Wants to Kill Electron](https://onezero.medium.com/to-revive-the-mac-apple-wants-to-kill-electron-154873336e78) и [Apple Is Trying to Kill Web Technology](https://onezero.medium.com/apple-is-trying-to-kill-web-technology-a274237c174d) указывают на попытки блокировки корпорацией Apple приложений, использующих [Electron](https://www.electronjs.org/). Это создаёт дополнительные риски использования инструментов сторонних разработчиков, не использующих Xcode при разработке мобильных приложений для iOS.
+
 # Дополнительные статьи
 
 Оценка [минимальных расходов на back-end](backend.md).
