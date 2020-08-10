@@ -162,13 +162,11 @@ NoSQL действительно работают очень быстро при
 
 В конце 2020 года планируется выпуск [новой версии Qt 6](https://www.qt.io/blog/qt-roadmap-for-2020). В числе прочего - поддержка C++ 20. Расширенная поддержка QML и Python. Значительно улучшается поддержка CMake.
 
-Статьи [To Revive the Mac, Apple Wants to Kill Electron](https://onezero.medium.com/to-revive-the-mac-apple-wants-to-kill-electron-154873336e78) и [Apple Is Trying to Kill Web Technology](https://onezero.medium.com/apple-is-trying-to-kill-web-technology-a274237c174d) указывают на попытки блокировки корпорацией Apple приложений, использующих [Electron](https://www.electronjs.org/). Это создаёт дополнительные риски использования инструментов сторонних разработчиков, не использующих Xcode при разработке мобильных приложений для iOS.
-
 ## Что не было ещё рассмотрено
 
-Я пока ещё не дорался до [Flutter](https://flutter.dev/) и Dart.
+Я пока ещё не добрался до [Flutter](https://flutter.dev/) и [Dart](https://dart.dev/).
 
-Не смотря на то, что со Swift можно попрактиковаться в Playground на iPad, Xcode я пробовал только на *Хакинтош*, что, однозначно, нельзя назвать лучшим и релевантным опытом.
+Не смотря на то, что со Swift можно попрактиковаться в [Swift Playgrounds](https://apps.apple.com/ru/app/swift-playgrounds/id908519492) на iPad, Xcode я пробовал только на *Хакинтош*, что, однозначно, нельзя назвать лучшим и релевантным опытом.
 
 Пока не очень понятно, как развивает свою эко-систему [Huawei](https://developer.huawei.com/consumer/en/doc/30114).
 
