@@ -164,6 +164,16 @@ NoSQL действительно работают очень быстро при
 
 Статьи [To Revive the Mac, Apple Wants to Kill Electron](https://onezero.medium.com/to-revive-the-mac-apple-wants-to-kill-electron-154873336e78) и [Apple Is Trying to Kill Web Technology](https://onezero.medium.com/apple-is-trying-to-kill-web-technology-a274237c174d) указывают на попытки блокировки корпорацией Apple приложений, использующих [Electron](https://www.electronjs.org/). Это создаёт дополнительные риски использования инструментов сторонних разработчиков, не использующих Xcode при разработке мобильных приложений для iOS.
 
+## Что не было ещё рассмотрено
+
+Я пока ещё не дорался до [Flutter](https://flutter.dev/) и Dart.
+
+Не смотря на то, что со Swift можно попрактиковаться в Playground на iPad, Xcode я пробовал только на *Хакинтош*, что, однозначно, нельзя назвать лучшим и релевантным опытом.
+
+Пока не очень понятно, как развивает свою эко-систему [Huawei](https://developer.huawei.com/consumer/en/doc/30114).
+
+Ссылки на [Ionic](https://ionicframework.com/) встречаются достаточно часто, но не настолько часто, чтобы его можно было рассматривать как конкурента React Native, или Flutter.
+
 # Дополнительные статьи
 
 Оценка [минимальных расходов на back-end](backend.md).
