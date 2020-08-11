@@ -138,7 +138,7 @@ NoSQL действительно работают очень быстро при
 
 Относится к типу **Hybrid Mobile Application** - приложение может работать медленнее, чем **Native App**.
 
-Отладка кода довольно сложная и неудобная. Добавление Native-функций возможно в **React Native CLI** и **Expo Bare Workflow** - это требует отличного знания Android Studio/Java/Kotlin и/или Xcode/Swift.
+Отладка кода довольно сложная и неудобная (необходимо использовать встроенный отладчик Google Chrome). Добавление Native-функций возможно в **React Native CLI** и **Expo Bare Workflow** - требует отличного знания Android Studio/Java/Kotlin и/или Xcode/Swift.
 
 ## Типовая последовательность разработки приложения
 
@@ -171,6 +171,8 @@ NoSQL действительно работают очень быстро при
 Пока не очень понятно, как развивает свою эко-систему [Huawei](https://developer.huawei.com/consumer/en/doc/30114).
 
 Ссылки на [Ionic](https://ionicframework.com/) встречаются достаточно часто, но не настолько часто, чтобы его можно было рассматривать как конкурента React Native, или Flutter.
+
+Очень перспективный, но не очень популярный фреймворк [Microsoft Xamarin](https://dotnet.microsoft.com/apps/xamarin) так же пока не был рассмотрен.
 
 # Дополнительные статьи
 
