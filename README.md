@@ -134,6 +134,8 @@ NoSQL действительно работают очень быстро при
 
 Пример приложения для Android с [QML и https](https://github.com/Kerminator1973/Qt5Exploration).
 
+Статья об [установке Qt](qtinstall.md).
+
 ### React Native
 
 Низкий порог вхождения на React-программистов и программистов для которых JavaScript-родной. Порог вхождения для программистов на практикующих JavaScript - высокий.
