@@ -56,7 +56,7 @@ SDK Platforms различаются по API Level и, чаще всего, н�
 qbs setup-toolchains --detect
 ```
 
-Подробее о qbs: https://download.qt.io/official_releases/qbs/
+Подробнее о qbs: https://download.qt.io/official_releases/qbs/. Также доступен подобный инструмент [для поиска toolchains для Android](https://doc.qt.io/qbs/cli-setup-android.html).
 
 # Дополнительные материалы
 
