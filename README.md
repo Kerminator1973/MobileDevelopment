@@ -154,7 +154,7 @@ NoSQL действительно работают очень быстро при
 
 Отладка кода довольно сложная и неудобная (необходимо использовать встроенный отладчик Google Chrome). Добавление Native-функций возможно в **React Native CLI** и **Expo Bare Workflow** - требует отличного знания Android Studio/Java/Kotlin и/или Xcode/Swift.
 
-Доступен пример приложения [Guess a Number](https://github.com/Kerminator1973/GuessANumber) с инструкцией по установке инструментальных средств.
+Доступен пример приложения [Guess a Number](https://github.com/Kerminator1973/GuessANumber) с инструкцией по установке инструментальных средств. Более сложный пример кода - [MealsRecipes](https://github.com/Kerminator1973/MealsRecipes).
 
 ## Типовая последовательность разработки приложения
 
