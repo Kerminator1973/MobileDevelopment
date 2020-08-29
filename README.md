@@ -183,13 +183,15 @@ NoSQL действительно работают очень быстро при
 
 Я пока ещё не добрался до [Flutter](https://flutter.dev/) и [Dart](https://dart.dev/).
 
-Не смотря на то, что со Swift можно попрактиковаться в [Swift Playgrounds](https://apps.apple.com/ru/app/swift-playgrounds/id908519492) на iPad, Xcode я пробовал только на *Хакинтош*, что нельзя назвать "релевантным опытом".
+Фреймворк [Microsoft Xamarin](https://dotnet.microsoft.com/apps/xamarin) так же пока не был рассмотрен.
+
+В 2020 году, множество компаний разрабатывают Progressive Web Apps (PWA's). Примеры: Facebook PWA, Pinterest PWA, AliExpress PWA, и т.д. PWA не нужно размещать в магазинах приложений, их легко обновлять и разрабатывать. Кажется, что у этого направления разработки - прекрасные перспективы.
+
+Не смотря на то, что со Swift можно попрактиковаться в [Swift Playgrounds](https://apps.apple.com/ru/app/swift-playgrounds/id908519492) на iPad, Xcode я пробовал только на *Хакинтош*, что нельзя назвать "релевантным опытом". С переходом на Apple Silicon эмулятор iOS будет работать на той же аппаратной платформе, что и настоящий iOS!
 
 Пока не очень понятно, как развивает свою эко-систему [Huawei](https://developer.huawei.com/consumer/en/doc/30114).
 
 Ссылки на [Ionic](https://ionicframework.com/) встречаются достаточно часто, но не настолько часто, чтобы его можно было рассматривать как конкурента React Native, или Flutter.
-
-Фреймворк [Microsoft Xamarin](https://dotnet.microsoft.com/apps/xamarin) так же пока не был рассмотрен.
 
 # Дополнительные статьи
 
