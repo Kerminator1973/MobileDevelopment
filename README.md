@@ -154,6 +154,12 @@ NoSQL действительно работают очень быстро при
 
 Относится к типу **Hybrid Mobile Application** - приложение может работать медленнее, чем **Native App**.
 
+Ограничения, свойственные конкретно Expo: 
+
+1. В каждое приложение включается Facebook SDK, что значительно увеличивает размер **APK/IPA** (дистрибуционного комплекта)
+2. Приложение Expo собирает **Advertising ID** пользователя, что нарушает Google's Developer Distribution Agreement и может быть причиной исключения из Google Play
+3. Публикация приложения через Expo либо очень медленная, либо платная ($29/месяц)
+
 Отладка кода довольно сложная и неудобная (необходимо использовать встроенный отладчик Google Chrome). Добавление Native-функций возможно в **React Native CLI** и **Expo Bare Workflow** - требует отличного знания Android Studio/Java/Kotlin и/или Xcode/Swift.
 
 Доступен пример приложения [Guess a Number](https://github.com/Kerminator1973/GuessANumber) с инструкцией по установке инструментальных средств. Более сложный пример кода - [MealsRecipes](https://github.com/Kerminator1973/MealsRecipes).
