@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SMS Transmitter</string>
+    <string name="action_settings">Options</string>
+    <string name="settings_host_address">Host Address</string>
+    <string name="pref_title_change_host_address">Change Host Address</string>
+    <string name="settings_host_port">Change Host Port</string>
+    <string name="pref_title_change_host_port">Host Port</string>
+
+    <!-- Key name for storing host address in SharedPreferences -->
+    <string name="pref_host_address" translatable="false">host_address</string>
+
+    <!-- Key name for storing host port in SharedPreferences -->
+    <string name="pref_host_port" translatable="false">host_port</string>
+
+</resources>

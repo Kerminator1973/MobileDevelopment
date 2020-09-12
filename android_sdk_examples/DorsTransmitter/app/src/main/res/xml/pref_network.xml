@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:inputType="textPhonetic"
+        android:key="@string/pref_host_address"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="@string/settings_host_address"
+        android:title="@string/pref_title_change_host_address" />
+
+    <EditTextPreference
+        android:inputType="number"
+        android:key="@string/pref_host_port"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="@string/settings_host_port"
+        android:title="@string/pref_title_change_host_port" />
+</PreferenceScreen>
