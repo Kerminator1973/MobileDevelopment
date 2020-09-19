@@ -158,7 +158,7 @@ NoSQL действительно работают очень быстро при
 
 Высокая скорость разработки пользовательского интерфейса, но инфраструктурые задачи (например, использование SQLite, или многопоточность) - в зачаточном состоянии.
 
-Доступны библиотеки для построения различных графиков. Мощнейшая и крайне популярная библиотека [D3.js](https://d3js.org/) может быть использована в React Native, но это связано с [некоторыми ограничениями](https://hswolff.com/blog/react-native-art-and-d3/). Альтернативные библиотеки для React: [Semiotic](https://github.com/emeeks/semiotic/) и [Recharts](http://recharts.org/en-US/).
+Доступны библиотеки для построения различных графиков. Мощнейшая и крайне популярная библиотека [D3.js](https://d3js.org/) может быть использована в React Native, но это связано с [некоторыми ограничениями](https://hswolff.com/blog/react-native-art-and-d3/). [Статья](https://medium.com/the-react-native-log/animated-charts-in-react-native-using-d3-and-art-21cd9ccf6c58) об использовании D3.js и ART c React Native. Альтернативные библиотеки для React: [Semiotic](https://github.com/emeeks/semiotic/) и [Recharts](http://recharts.org/en-US/).
 
 Относится к типу **Hybrid Mobile Application** - приложение может работать медленнее, чем **Native App**.
 
