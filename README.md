@@ -187,7 +187,7 @@ NoSQL действительно работают очень быстро при
 
 ## Ближайшее будущее
 
-Начиная с версии 0.62 в эко-системе React Native появился новый инструмент отладки кода, под названием [Flipper](https://fbflipper.com/).
+Начиная с версии 0.62 в эко-системе React Native появился новый инструмент отладки кода, под названием [Flipper](https://fbflipper.com/). Статья о средствах отладки кода для React Native, и о Flipper, в частности: [Flipper — A React Native revolution by Lukas Kurucz](https://itnext.io/flipper-a-react-native-revolution-4859d6acd685).
 
 В конце 2020 года, React Native перейдёт на новую архитектуру - об этом статья Rémi Gallego под названием [React Native's re-architecture in 2020](https://medium.com/swlh/react-natives-re-architecture-in-2020-9bb82659792c). Ключевые улучшения:
 
