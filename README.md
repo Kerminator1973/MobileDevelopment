@@ -202,6 +202,8 @@ NoSQL действительно работают очень быстро при
 3. Лучшая интеграция с Python
 4. Значительно улучшенная интеграция с [CMake](https://cmake.org/).
 
+Вместе с тем утверждается, что все LTS сборки Qt будут [только коммерческими](https://www.theregister.com/2021/01/05/qt_lts_goes_commercial_only/).
+
 ## Что не было ещё рассмотрено
 
 Одно из наиболее интересных направлений развития направления мобильный разработки - [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/multiplatform.html).
