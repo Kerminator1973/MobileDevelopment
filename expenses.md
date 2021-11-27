@@ -114,4 +114,4 @@ Apple AppStore - $100/год
 
 ## Почти всё можно запустить бесплатно
 
-Создание [публично доступного web-сайта]((https://github.com/Kerminator1973/WebDevelopment/blob/master/homesite.md)) в домашней сети.
+Создание [публично доступного web-сайта](https://github.com/Kerminator1973/WebDevelopment/blob/master/homesite.md) в домашней сети.
