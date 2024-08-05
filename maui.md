@@ -18,6 +18,7 @@ MAUI использует XAML и, таким образом, концептуа
 
 Однако на стороне Avalonia:
 
+- лучшая поддержка Linux
 - Reactive Programming
 - Lightweight
 
