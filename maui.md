@@ -34,3 +34,5 @@ MAUI использует XAML и, таким образом, концептуа
 В дополнительных главах (только online, в печатной книге они отсутствуют) книги "C# 10 and .NET 6. Modern Cross-Platform Development" by Mark J. Price в разделе, посвящённом MAIU есть разделы, посвящённые **ObservableCollection** и интерфейсу **INotificationPropertyChanged**. В книге есть несколько советов о том, как разрешить небезопасные соединение между приложением и сервером (поменять https на http). См.: ATS, UsesCleartextTraffic.
 
 Исходные тексты MAUI доступны в репозитории [dotnet/maui](https://github.com/dotnet/maui) на GitHub.
+
+>14 мая 2025 года, по информации Miguel de Icaza (Gnome, Mono, Xamarin), Microsoft уволила инженеров из проекта Maui. Вероятно, что этот продукт будет закрыт. В качестве альтернативы предлагается использовать Avalonia, или Uno.
