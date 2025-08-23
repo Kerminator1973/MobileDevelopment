@@ -49,6 +49,8 @@ npx react-native doctor
 
 Запустив базовое приложении в эмуляторе можно дважды нажать кнопку R, чтобы перезапустить код приложения. Комбинация `Ctrl+M`, или встряска мобильного телефона позволяет открыть откладочное меню приложения.
 
+Если необходимо внести какие-то существенные изменения в проект, то приложение можно остановить через консоль, в которой исполняется Bundler Metro, а после внесения изменений сново запустить в этой же консоли посредством команды `npx react-native run-android`. Останавливать эмулятор QEMU с Android не нужно.
+
 Информация при запуске приложения: "info React Native v0.81.0 is now available (your project is running on v0.70.10)."
 
 ## Активировать "Режим разработчика" в Android
@@ -94,8 +96,214 @@ UNDER CONSTRUCTION: как переключить проект на исполь
 
 ## UNDER CONSTRUCTION: С чем нужно разобраться
 
-- Как останавливать и перезапускать эмулятор и всю обвязку
 - Как осуществлять отладку кода
-- Восстановить процесс разработки кода, используя Expo
 - Разобраться с тем, что такое Metro
-- Реализовать работу с камерой и считывать QR-код
+
+## UNDER CONSTRUCTION: считывание QR-кода посредством камеры
+
+Поддержать функционал не удалось. Были добавлены следующие зависимости:
+
+```shell
+npm install react-native-vision-camera
+npm install react-native-reanimated
+npm install vision-camera-code-scanner
+```
+
+В файле манифеста "AndroidManifest.xml" было добавлено разрешение использования камеры:
+
+```xml
+<uses-permission android:name="android.permission.CAMERA" />
+```
+
+После этого, при попытке сборке проекта выводится следующее сообщение:
+
+```output
+BUILD FAILED in 2s
+
+    at makeError (d:\Sources\Playground\CountReader\node_modules\@react-native-community\cli-platform-android\node_modules\execa\index.js:174:9)
+    at d:\Sources\Playground\CountReader\node_modules\@react-native-community\cli-platform-android\node_modules\execa\index.js:278:16
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async runOnAllDevices (d:\Sources\Playground\CountReader\node_modules\@react-native-community\cli-platform-android\build\commands\runAndroid\runOnAllDevices.js:109:5)
+    at async Command.handleAction (d:\Sources\Playground\CountReader\node_modules\@react-native-community\cli\build\index.js:142:9)
+```
+
+## Создание приложения с использованием Expo
+
+Expo - альтернативный подход создания приложений React Native. Создать приложение из шаблона можно командой:
+
+```shell
+npx create-expo-app CountScanner
+```
+
+Структура проекта гораздо больше похожа на типовые приложения на React.
+
+Запустить проект можно командой:
+
+```shell
+npx expo start
+```
+
+Expo использует более свежую версию React Native 0.79.5.
+
+Загрузка приложения на мобильный телефон осуществляется через интернет. Задачу выполняет мобильное приложение Expo Go, которые считывает QR-код с экрана Desktop-приложения и закачивает это приложение через Wi-Fi.
+
+Затем следует добавить в проект следующие зависимости:
+
+```shell
+npx expo install expo-camera expo-barcode-scanner
+```
+
+DeepSeek предлагает вполне работающий вариант считывания QR-кода, который является главным компонентом приложения. В простом шаблоне приложения, нам нужно найти файл "App.js", в случае, если был выбран более сложный шаблон, может потребоваться найти файл "\app\_layout.tsx" и сохранить в нём следующий код:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, Button, Linking } from 'react-native';
+import { CameraView, Camera } from 'expo-camera';
+import * as BarcodeScanner from 'expo-barcode-scanner';
+
+export default function App() {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [scanned, setScanned] = useState(false);
+  const [data, setData] = useState('No QR code scanned yet');
+  const [activeScanner, setActiveScanner] = useState(false);
+
+  useEffect(() => {
+    const getCameraPermissions = async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(status === 'granted');
+    };
+
+    getCameraPermissions();
+  }, []);
+
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    setData(data);
+    alert(`QR Code with data ${data} has been scanned!`);
+  };
+
+  const openLink = () => {
+    if (data.startsWith('http://') || data.startsWith('https://')) {
+      Linking.openURL(data);
+    } else {
+      alert('Scanned data is not a valid URL');
+    }
+  };
+
+  if (hasPermission === null) {
+    return <Text>Requesting for camera permission</Text>;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>QR Code Scanner</Text>
+      
+      {activeScanner ? (
+        <View style={styles.cameraContainer}>
+          <CameraView
+            onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
+            barcodeScannerSettings={{
+              barcodeTypes: ["qr", "pdf417"],
+            }}
+            style={styles.camera}
+          />
+          {scanned && (
+            <Button 
+              title={'Tap to Scan Again'} 
+              onPress={() => {
+                setScanned(false);
+                setData('No QR code scanned yet');
+              }} 
+            />
+          )}
+        </View>
+      ) : (
+        <View style={styles.placeholder}>
+          <Text style={styles.placeholderText}>Camera not active</Text>
+        </View>
+      )}
+      
+      <View style={styles.controls}>
+        <Button
+          title={activeScanner ? "Stop Scanner" : "Start Scanner"}
+          onPress={() => {
+            setActiveScanner(!activeScanner);
+            setScanned(false);
+          }}
+        />
+      </View>
+      
+      <View style={styles.resultContainer}>
+        <Text style={styles.resultTitle}>Scanned Data:</Text>
+        <Text style={styles.resultData}>{data}</Text>
+        {data.startsWith('http') && (
+          <Button title="Open Link" onPress={openLink} />
+        )}
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 20,
+  },
+  cameraContainer: {
+    flex: 5,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    marginBottom: 20,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  camera: {
+    flex: 1,
+  },
+  placeholder: {
+    flex: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d1d1d1',
+    marginBottom: 20,
+    borderRadius: 10,
+  },
+  placeholderText: {
+    fontSize: 16,
+    color: '#666',
+  },
+  controls: {
+    marginBottom: 20,
+  },
+  resultContainer: {
+    padding: 15,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  resultTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  resultData: {
+    fontSize: 16,
+    marginBottom: 10,
+    color: '#333',
+  },
+});
+```
+
+Приложение является работоспособным, считывает QR-коды в кодировках QR и PDF417.
