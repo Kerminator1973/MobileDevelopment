@@ -494,3 +494,16 @@ const styles = StyleSheet.create({
 ```shell
 npx expo install expo-camera
 ```
+
+Вариант на Expo SDK 53 и без depricated **expo-barcode-scanner** успешно собрался на сервере EAS. Артефакты сборки можно загрузить на локальный компьютер. В моём случае - был загружен файл "application-4e3a5db4-a27a-4baf-bf80-7096d48bd754.aab". aab - это **Android App Bundle**. Однако файл aab не поддерживается в Android напрямую и его нужно преобразовать в apk.
+
+Скачать [bundletool](https://github.com/google/bundletool/releases)
+
+
+```shell
+java -jar bundletool.jar build-apks --bundle=application-4e3a5db4-a27a-4baf-bf80-7096d48bd754.aab --output=countscanner.apks --mode=universal
+```
+
+В результате выполнения этой команды был получен файл "countscanner.apks", который по прежнему нельзя установить в Android. Однако этот файл просто архив, в котором должны находиться apk-файлы. Можно скопировать файл на Android-телефон и установить приложение.
+
+Удалось скомпилировать приложение и установить его на телефон. Приложение полноценно работает.
