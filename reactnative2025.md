@@ -314,3 +314,183 @@ const styles = StyleSheet.create({
 Приложение является работоспособным, считывает QR-коды в кодировках QR и PDF417.
 
 Metro Bundler позволяет запускать React DevTools, можно смотреть логи, есть доступ к профилировщику, но пока не очень понятно, как можно было бы вести отладку кода, непосредственно в Visual Studio Code.
+
+## Использование EAS
+
+Использование сервиса требует регистрации пользователя в системе.
+
+Также необходимо установить консольные утилиты (от имени администратора):
+
+```shell
+npm install --global eas-cli
+```
+
+При создании проекта, EAS создает GUID проекта, который нужно применить к папке с проектом. Например:
+
+```shell
+eas init --id fa93fed2-5208-4c43-bff6-a4c0ba473701
+```
+
+Команда связывает папку на диске с проектом в EAS.
+
+Команда сборки приложения в консоли выглядит следующим образом:
+
+```shell
+eas build:configure
+```
+
+Сборка на сервере запускается следующим образом:
+
+```shell
+eas build
+```
+
+Перед началом сборки требуется выбрать платформу, сгенерировать ключи, определить slug, дать имя сборке (в терминах Android). Далее сборка будет запланирована на сервере и, в какой-то момент, будет запущена.
+
+Однако, в моём случае, сборка не была успешной:
+
+```output
+× Build failed
+
+🤖 Android build failed:
+Gradle build failed with unknown error. See logs for the "Run gradlew" (https://expo.dev/accounts/kerminator1973/projects/countscanner/builds/592d78b3-89ca-4dbf-9ce6-05cecf7473ee#run-gradlew) phase for more information.
+```
+
+По результатам анализа сбоя, была запущена команда:
+
+```shell
+npx expo install --check
+```
+
+Команда обновила версию React Native.
+
+Однако основная проблема сборки была связана с использованием компонента expo-barcode-scanner:
+
+```output
+* What went wrong:
+Execution failed for task ':expo-barcode-scanner:compileReleaseKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+```
+
+Поиск проблемы в интернет дал следующий совет:
+
+```output
+If you use Expo SDK 48/49 etc., check Expo docs for the recommended kotlinVersion/AGP/Gradle versions. Mismatches commonly cause the Kotlin compiler runner failure.
+```
+
+На сайте проекта [Expo BarCodeScanner](https://docs.expo.dev/versions/v51.0.0/sdk/bar-code-scanner/) указывается, что "_Deprecated: This library will no longer be available from SDK 51. We recommend using expo-camera which has barcode scanning built-in instead._"
+
+Также в документации написано, что можно сконфигурировать права, предоставляемые приложению:
+
+```json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ]
+    ]
+  }
+}
+```
+
+В результате я взял пример работы с камерой из официальной документации библиотеки [expo-camera](https://docs.expo.dev/versions/v51.0.0/sdk/camera/#usage) и доработал его добавив функционал считывания QR-кода:
+
+```js
+import { CameraType, CameraView, useCameraPermissions } from 'expo-camera';
+import { useState } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+export default function App() {
+  const [facing, setFacing] = useState<CameraType>('back');
+  const [permission, requestPermission] = useCameraPermissions();
+  const [scanned, setScanned] = useState(false);
+
+  if (!permission) {
+    // Camera permissions are still loading.
+    return <View />;
+  }
+
+  if (!permission.granted) {
+    // Camera permissions are not granted yet.
+    return (
+      <View style={styles.container}>
+        <Text style={styles.message}>We need your permission to show the camera</Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
+  }
+
+  function toggleCameraFacing() {
+    setFacing(current => (current === 'back' ? 'front' : 'back'));
+  }
+
+  const handleBarCodeScanned = ({ data, type }) => {
+    setScanned(true);
+    alert(`QR code scanned: ${data}`);
+  };
+
+  return (
+    <View style={styles.container}>
+      <CameraView 
+        style={styles.camera} 
+        facing={facing} 
+        onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
+        barcodeScannerSettings={{
+          barcodeTypes: ["qr"],
+        }}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+            <Text style={styles.text}>Flip Camera</Text>
+          </TouchableOpacity>
+        </View>
+      </CameraView>
+      {scanned && (
+        <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />
+      )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  message: {
+    textAlign: 'center',
+    paddingBottom: 10,
+  },
+  camera: {
+    flex: 1,
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    margin: 64,
+  },
+  button: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+});
+```
+
+Установить библиотеку можно следующим образом:
+
+```shell
+npx expo install expo-camera
+```
